@@ -2,6 +2,8 @@ package main;
 
 import javax.swing.JPanel;
 import entities.Aventureiro;
+import tile.TileManager;
+
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -9,17 +11,20 @@ import java.awt.Graphics2D;
 
 public class GamePanel extends JPanel implements Runnable{
 	
+
+	private static final long serialVersionUID = 1L;
 	// configuracoes de tela
 	final int tamanhoQuadradosInicial = 16; // 16x16 pixels (tamanho mais usados para criar jogos em 2D)
 	final int escala = 3; 
 	public final int tamanhoQuadrados = tamanhoQuadradosInicial * escala; // 16x3 = 48 -> na tela vai aparecer que um quadrado eh de 48x48 pixels
 	
 	// quantos quadrados podem ser mostrados na tela?
-	final int maxColunas = 36; // podem ter 36 quadrados de largura
-	final int maxLinhas = 18; // podem ter 18 quadrados de altura
-	final int larguraTela = tamanhoQuadrados * maxColunas; // 1728 pixels
-	final int alturaTela = tamanhoQuadrados * maxLinhas; // 864 pixels
+	public final int maxColunas = 36; // podem ter 36 quadrados de largura
+	public final int maxLinhas = 18; // podem ter 18 quadrados de altura
+	public final int larguraTela = tamanhoQuadrados * maxColunas; // 1728 pixels
+	public final int alturaTela = tamanhoQuadrados * maxLinhas; // 864 pixels
 	
+	TileManager tileM = new TileManager(this);
 	InputTeclado teclado = new InputTeclado();
 	Thread gameThread;
 	Aventureiro aventureiro = new Aventureiro(this, teclado);
@@ -75,6 +80,8 @@ public class GamePanel extends JPanel implements Runnable{
 		super.paintComponent(g);
 		
 		Graphics2D g2 = (Graphics2D)g;
+		tileM.draw(g2);
+		
 		aventureiro.draw(g2);
 		g2.dispose();
 	}
