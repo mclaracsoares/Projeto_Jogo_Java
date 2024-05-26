@@ -2,6 +2,7 @@ package main;
 
 import javax.swing.JPanel;
 import entities.Aventureiro;
+import object.SuperObject;
 import tile.TileManager;
 
 import java.awt.Dimension;
@@ -30,14 +31,20 @@ public class GamePanel extends JPanel implements Runnable {
     TileManager tileM = new TileManager(this);
     InputTeclado teclado = new InputTeclado();
     Thread gameThread;
+    public AssetSetter aSetter = new AssetSetter(this);
     public Aventureiro aventureiro = new Aventureiro(this, teclado);
-
+    public SuperObject obj[] = new SuperObject[10];
+    
     public GamePanel() {
         this.setPreferredSize(new Dimension(larguraTela, alturaTela)); // panel size
         this.setBackground(Color.black);
         this.setDoubleBuffered(true); // melhora a performance
         this.addKeyListener(teclado);
         this.setFocusable(true);
+    }
+    public void setupGame() {
+    	
+    	aSetter.setObject();
     }
 
     public void startGameThread() {
@@ -47,6 +54,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public CollisionChecker checker = new CollisionChecker(this);
     int FPS = 60;
+	private int i;
 
     // game loop
     @Override
@@ -84,7 +92,16 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
+        // tile
         tileM.draw(g2);
+       
+        //object
+        for(int i = 0; i < obj.length; i++) {}
+			if(obj[i] != null ) {
+        		obj[i].draw(g2, this);
+        	}
+        
+        // jogador
         aventureiro.draw(g2);
         g2.dispose();
     }
