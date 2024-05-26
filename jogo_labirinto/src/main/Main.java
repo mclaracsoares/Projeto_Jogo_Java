@@ -16,7 +16,8 @@ public class Main {
 
         window.setLocationRelativeTo(null); // display no meio da tela
         window.setVisible(true); // tornar a tela visível
-
+        
+        gamePanel.setupGame();
         gamePanel.startGameThread();
     }
 }
