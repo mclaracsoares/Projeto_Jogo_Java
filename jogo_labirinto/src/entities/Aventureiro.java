@@ -46,8 +46,8 @@ public class Aventureiro {
 
     // onde o personagem vai iniciar no mapa
     public void setCoordenadasInicio() {
-        mapaX = gp.tamanhoQuadrados * 6;
-        mapaY = gp.tamanhoQuadrados * 6;
+        mapaX = gp.tamanhoQuadrados * 2;
+        mapaY = gp.tamanhoQuadrados * 2;
         velocidade = 4;
         direcao = "direita";
     }
