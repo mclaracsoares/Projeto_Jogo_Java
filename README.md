@@ -54,7 +54,9 @@ O jogador pode coletar chaves e abrir portas com elas.
 
 Quando o jogador alcança o objetivo, uma mensagem de parabéns é exibida.
 
-OBS: Há um Easter Egg no jogo...
+### OBS: 
+
+Há um Easter Egg secreto no jogo... Tente encontra-lo!
 
 ## Como Executar o Jogo:
 
