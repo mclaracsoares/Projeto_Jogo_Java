@@ -14,6 +14,8 @@ public class Aventureiro {
     public String direcao; // indicar a direcao em que o personagem está se movendo
     public int contadorSprite = 0; // indicar a frequência de alteração do tipo de movimentação
     public int numSprite = 1; // alterar o tipo de movimentação (ex: cima1, cima2)
+    public int solidAreaDefaultX, solidAreaDefaultY;
+    public int temChave = 0;
 
     public Rectangle solidArea;
     public boolean collisionOn = false;
@@ -37,6 +39,8 @@ public class Aventureiro {
         solidArea = new Rectangle();
         solidArea.x = 16;
         solidArea.y = 16;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
         solidArea.width = 16;
         solidArea.height = 16;
 
@@ -46,8 +50,8 @@ public class Aventureiro {
 
     // onde o personagem vai iniciar no mapa
     public void setCoordenadasInicio() {
-        mapaX = gp.tamanhoQuadrados * 2;
-        mapaY = gp.tamanhoQuadrados * 2;
+        mapaX = gp.tamanhoQuadrados * 8;
+        mapaY = gp.tamanhoQuadrados * 6;
         velocidade = 4;
         direcao = "direita";
     }
@@ -83,6 +87,9 @@ public class Aventureiro {
             collisionOn = false;
             gp.checker.checkTile(this);
 
+            int objIndex = gp.checker.checkObject(this, true);
+            pickUpObject(objIndex);
+
             if (!collisionOn) {
                 switch (direcao) {
                     case "up":
@@ -105,6 +112,27 @@ public class Aventureiro {
                 numSprite = (numSprite == 1) ? 2 : 1;
                 contadorSprite = 0;
             }
+        }
+    }
+
+    public void pickUpObject(int i) {
+        if (i != 999) {
+            String objName = gp.obj[i].name;
+
+            switch (objName) {
+                case "key":
+                    temChave++;
+                    gp.obj[i] = null;
+                    System.out.println("chave: " + temChave);
+                    break;
+                case "porta":
+                    if (temChave > 0) {
+                        gp.obj[i] = null;
+                        temChave--;
+                    }
+                    break;
+            }
+
         }
     }
 

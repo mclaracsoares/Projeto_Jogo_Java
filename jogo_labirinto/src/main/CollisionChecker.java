@@ -57,4 +57,70 @@ public class CollisionChecker {
                 break;
         }
     }
+
+    public int checkObject(Aventureiro aventureiro, boolean player) {
+        int index = 999;
+        for (int i = 0; i < gp.obj.length; i++) {
+            if (gp.obj[i] != null) {
+                aventureiro.solidArea.x = aventureiro.mapaX + aventureiro.solidArea.x;
+                aventureiro.solidArea.y = aventureiro.mapaY + aventureiro.solidArea.y;
+
+                gp.obj[i].solidArea.x = gp.obj[i].worldX + gp.obj[i].solidArea.x;
+                gp.obj[i].solidArea.y = gp.obj[i].worldY + gp.obj[i].solidArea.y;
+
+                switch (aventureiro.direcao) {
+                    case "up":
+                        aventureiro.solidArea.y -= aventureiro.velocidade;
+                        if (aventureiro.solidArea.intersects(gp.obj[i].solidArea)) {
+                            if (gp.obj[i].collision) {
+                                aventureiro.collisionOn = true;
+                            }
+                            if (player) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "down":
+                        aventureiro.solidArea.y += aventureiro.velocidade;
+                        if (aventureiro.solidArea.intersects(gp.obj[i].solidArea)) {
+                            if (gp.obj[i].collision) {
+                                aventureiro.collisionOn = true;
+                            }
+                            if (player) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "left":
+                        aventureiro.solidArea.x -= aventureiro.velocidade;
+                        if (aventureiro.solidArea.intersects(gp.obj[i].solidArea)) {
+                            if (gp.obj[i].collision) {
+                                aventureiro.collisionOn = true;
+                            }
+                            if (player) {
+                                index = i;
+                            }
+                        }
+                        break;
+                    case "right":
+                        aventureiro.solidArea.x += aventureiro.velocidade;
+                        if (aventureiro.solidArea.intersects(gp.obj[i].solidArea)) {
+                            if (gp.obj[i].collision) {
+                                aventureiro.collisionOn = true;
+                            }
+                            if (player) {
+                                index = i;
+                            }
+                        }
+                        break;
+                }
+
+                aventureiro.solidArea.x = aventureiro.solidAreaDefaultX;
+                aventureiro.solidArea.y = aventureiro.solidAreaDefaultY;
+                gp.obj[i].solidArea.x = gp.obj[i].solidAreaDefaultX;
+                gp.obj[i].solidArea.y = gp.obj[i].solidAreaDefaultY;
+            }
+        }
+        return index;
+    }
 }
