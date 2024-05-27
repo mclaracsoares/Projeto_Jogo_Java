@@ -6,6 +6,8 @@ Este é um simples jogo de labirinto desenvolvido em Java. Abaixo estão algumas
 
 Maria Clara C. Soares
 
+GitHub: https://github.com/mclaracsoares?tab=repositories
+
 Lucas Gurgel
 
 Marco Antônio Arcoverde
