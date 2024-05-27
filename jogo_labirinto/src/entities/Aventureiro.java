@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 import main.InputTeclado;
 
+
 public class Aventureiro {
     public int mapaX, mapaY; // coordenadas do personagem
     public int velocidade; // velocidade do personagem
@@ -130,6 +131,9 @@ public class Aventureiro {
                         gp.obj[i] = null;
                         temChave--;
                     }
+                    break;
+                case "bau":
+                    gp.ui.gameFinished = true;
                     break;
             }
 

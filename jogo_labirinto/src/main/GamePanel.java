@@ -30,11 +30,12 @@ public class GamePanel extends JPanel implements Runnable {
 
     TileManager tileM = new TileManager(this);
     InputTeclado teclado = new InputTeclado();
+    public UI ui = new UI(this);
     Thread gameThread;
     public AssetSetter aSetter = new AssetSetter(this);
     public Aventureiro aventureiro = new Aventureiro(this, teclado);
     public SuperObject obj[] = new SuperObject[5];
-    private UI ui;
+    
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(larguraTela, alturaTela));
