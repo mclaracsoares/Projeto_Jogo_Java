@@ -44,7 +44,7 @@ Gerencia as entradas do teclado do jogador.
 
 Controla a interface do usuário, incluindo a exibição de mensagens e elementos gráficos como chaves.
 
-### Funcionalidades Principais:
+## Funcionalidades Principais:
 
 O jogador pode mover-se pelo labirinto usando as teclas W (cima), A (esquerda), S (baixo) e D (direita).
 
@@ -56,7 +56,7 @@ Quando o jogador alcança o objetivo, uma mensagem de parabéns é exibida.
 
 OBS: Há um Easter Egg no jogo...
 
-### Como Executar o Jogo:
+## Como Executar o Jogo:
 
 Certifique-se de ter o Java Development Kit (JDK) instalado em sua máquina.
 
@@ -64,7 +64,7 @@ Compile todos os arquivos .java.
 
 Execute o arquivo Main.java usando o comando java para iniciar o jogo.
 
-### Notas Adicionais:
+## Notas Adicionais:
 
 Este jogo é um projeto educacional simples e pode ser expandido com mais funcionalidades e melhorias na jogabilidade, gráficos e som.
 
