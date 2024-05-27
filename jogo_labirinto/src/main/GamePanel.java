@@ -71,6 +71,10 @@ public class GamePanel extends JPanel implements Runnable {
                 double tempoRestante = proxImpressao - System.nanoTime();
                 tempoRestante = tempoRestante / 1000000;
 
+                if(tempoRestante <= 0){
+                    tempoRestante *= 10000000;
+                }
+
                 Thread.sleep((long) tempoRestante);
 
                 proxImpressao += intervaloImpressao;
